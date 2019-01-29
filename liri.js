@@ -44,11 +44,11 @@ function concertThis(bands) {
     // If the request is undefined display error
     request(queryUrl, function (error, response, body) {
         // If request is successful exectue
-        if (!error && response.statusCode === 200) {
+        if (error, response.statusCode === 200) {
             var bandsData = JSON.parse(body);
             var concertData = bandsData[0].datetime
             // Setting Moment date format
-            var momentData = moment().format("L");
+            var momentData = moment().format("MM/DD/YYYY");
             console.log("**********************");
             // Display data of the concert
             console.log("Concert: " + bandsData[0].venue.name +
@@ -65,6 +65,7 @@ function spotThis(songInfo) {
     if (songInfo === undefined) {
         songInfo = "Ace of Base - The Sign";
     }
+    // Spotify search call for song information through API
     spotify.search({ 
         type: "track", 
         query: songInfo }, 
